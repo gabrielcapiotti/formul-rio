@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Dados Pessoais</title>
+</head>
+
+<body>
+    <h1>Formulário</h1>
+    <form id="formulario">
+        <br>
+        <fieldset>
+            <legend>Dados Pessoais</legend>
+            <label for="nome">Nome:</label><br>
+            <input type="text" id="nome" required><br>
+
+            <label for="endereco">Endereço:</label><br>
+            <input type="text" id="endereco" required><br>
+
+            <label for="cidade">Cidade:</label><br>
+            <input type="text" id="cidade" required><br>
+
+            <label for="estado">Estado:</label>
+            <select name="estado" id="estado">
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+                <option value="EX">Extrangeiro</option>
+            </select>
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Dados Profissionais</legend>
+            <label>Natureza de Cargo:</label>
+            <br>
+            <div id="interesses">
+                <input type="radio" name="cargo" value="gerencia" checked>
+                <label for="gerencia">Gerência</label>
+
+                <input type="radio" name="cargo" value="financeiro">
+                <label for="financeiro">Financeiro</label>
+
+                <input type="radio" name="cargo" value="recepcao">
+                <label for="recepcao">Recepção</label>
+
+                <input type="radio" name="cargo" value="administrativo">
+                <label for="administrativo">Administrativo</label>
+
+                <input type="radio" name="cargo" value="juridico">
+                <label for="juridico">Jurídico</label>
+            </div>
+            <br>
+            <br>
+            <label for="areaInteresse">Área de Interesse:</label>
+            <br>
+            <input type="checkbox" value="computacao" name="interesse">
+            <label for="computacao">Computação</label>
+
+            <input type="checkbox" value="biologia" name="interesse">
+            <label for="biologia">Biologia</label>
+
+            <input type="checkbox" value="meioAmbiente" name="interesse">
+            <label for="meioAmbiente">Meio Ambiente</label>
+
+            <input type="checkbox" value="engenharia" name="interesse">
+            <label for="engenharia">Engenharia</label>
+
+            <input type="checkbox" value="historia" name="interesse">
+            <label for="historia">História</label>
+            <br>
+            <br>
+            <label for="miniCurriculo"> Mini Currículo</label>
+            <textarea name="Curriculo" id="curriculo" cols="50" rows="5">
+            </textarea>
+        </fieldset>
+        <br>
+        <input type="button" id="btnEnviar" value="Enviar" name="enviar" onclick="printaResultado()">
+        <input type="button" id="btnLimpar" value="Limpar" name="limpar" onclick="limparDados()">
+    </form>
+
+    <script>
+        function printaResultado() {
+            const nome = document.getElementById('nome').value;
+            const endereco = document.getElementById('endereco').value;
+            const cidade = document.getElementById('cidade').value;
+            const estado = document.getElementById('estado').value;
+            const cargo = document.querySelector('input[name="cargo"]:checked').value;
+            const interesses = document.querySelectorAll('input[name="interesse"]:checked');
+            const curriculo = document.getElementById('curriculo').value;
+
+            console.log('Nome:', nome);
+            console.log('Endereço:', endereco);
+            console.log('Cidade:', cidade);
+            console.log('Estado:', estado);
+            console.log('Cargo:', cargo);
+            console.log('Interesses:');
+            interesses.forEach(function (interesse) {
+                console.log('   -', interesse.labels[0].innerText);
+            });
+            console.log('Mini Currículo:', curriculo);
+        }
+
+        function limparDados() {
+            document.getElementById('formulario').reset();
+        }
+    </script>
+</body>
+
+</html>
